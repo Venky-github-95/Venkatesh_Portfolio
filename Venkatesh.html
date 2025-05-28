@@ -1628,31 +1628,32 @@
         </div>
 
         <div class="contact-form">
-      <h3>Send Me a Message</h3>
-      <form id="contactForm" action="https://script.google.com/macros/s/AKfycby8nrh5wuFyrHqsyEOaPwjRqiq6IlLxqch6WvMVvo3o7x0Gq5l238ODFO6H4mQs18nz4w/exec" method="POST">
-        <div class="input-box">
-          <input type="text" name="name" required />
-          <label>Full Name</label>
+          <h3>Send Me a Message</h3>
+          <form id="contactForm">
+            <div class="input-box">
+              <input type="text" name="name" required />
+              <label>Full Name</label>
+            </div>
+
+            <div class="input-box">
+              <input type="email" name="email" required />
+              <label>Email</label>
+            </div>
+
+            <div class="input-box">
+              <input type="text" name="subject" required />
+              <label>Subject</label>
+            </div>
+
+            <div class="input-box">
+              <textarea name="message" required></textarea>
+              <label>Message</label>
+            </div>
+
+            <button type="submit" class="btn">Send Message</button>
+          </form>
         </div>
 
-        <div class="input-box">
-          <input type="email" name="email" required />
-          <label>Email</label>
-        </div>
-
-        <div class="input-box">
-          <input type="text" name="subject" required />
-          <label>Subject</label>
-        </div>
-
-        <div class="input-box">
-          <textarea name="message" required></textarea>
-          <label>Message</label>
-        </div>
-
-        <button type="submit" class="btn">Send Message</button>
-      </form>
-    </div>
         <!-- <div class="contact-form">
           <h3>Send Me a Message</h3>
           <form action="#" method="POST">
@@ -1763,17 +1764,27 @@
       window.addEventListener("load", animateOnScroll);
 
       // Back to Top Button
-      const goTopBtn = document.querySelector(".go-top");
 
-      window.addEventListener("scroll", () => {
-        if (window.pageYOffset > 300) {
-          goTopBtn.classList.add("active");
-        } else {
-          goTopBtn.classList.remove("active");
-        }
+      document.addEventListener("DOMContentLoaded", () => {
+        const goTopBtn = document.querySelector(".go-top");
+
+        window.addEventListener("scroll", () => {
+          if (window.pageYOffset > 300) {
+            goTopBtn.classList.add("active");
+          } else {
+            goTopBtn.classList.remove("active");
+          }
+        });
+
+        goTopBtn.addEventListener("click", () => {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
       });
 
-      // Smooth Scrolling for Anchor Links
+      // Smooth Scrolling for Anchor Links with Offset
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
           e.preventDefault();
@@ -1783,8 +1794,11 @@
 
           const targetElement = document.querySelector(targetId);
           if (targetElement) {
+            const offset = -90; // Adjust this value to scroll above the target
+            const targetPosition = targetElement.offsetTop - offset;
+
             window.scrollTo({
-              top: targetElement.offsetTop - 70,
+              top: targetPosition,
               behavior: "smooth",
             });
           }
@@ -1847,6 +1861,35 @@
         }, 500);
       });
 
-          </script>
+      // Contact messages
+
+      const form = document.getElementById("contactForm");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const data = {
+          name: form.name.value,
+          email: form.email.value,
+          subject: form.subject.value,
+          message: form.message.value,
+        };
+
+        const webhookURL =
+          "https://script.google.com/macros/s/AKfycbxtpY1rcSTyll_9XxIqokvkLLAezkFA5qc-GBP-mmubOUH9K8yU-M4BvmLORZidhVB8jA/exec";
+
+        const res = await fetch(webhookURL, {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        const result = await res.json();
+        alert(result.result || "Error");
+        form.reset();
+      });
+    </script>
   </body>
 </html>
