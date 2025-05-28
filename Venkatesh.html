@@ -1128,9 +1128,11 @@
           position: fixed;
           top: 0;
           left: -100%;
-          width: 80%;
-          height: 100vh;
+          width: 100%;
+          height: 90vh;
+          padding: 40px 0 50px 0;
           background: var(--light);
+          display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
@@ -1145,7 +1147,11 @@
 
         .navbar a {
           margin: 15px 0;
-          font-size: 20px;
+          font-size: 24px;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          text-align: center;
         }
 
         .menu-toggle {
@@ -1154,6 +1160,7 @@
           height: 30px;
           cursor: pointer;
           z-index: 100;
+          margin-right: 20px;
         }
 
         .menu-toggle span {
@@ -1247,10 +1254,7 @@
         </div>
       </div>
       <div class="hero-img">
-        <img
-          src="D:/Documentations/Resume/Portfolio/Images/Profile_Pic.jpeg"
-          alt="Venkatesh M"
-        />
+        <img src="Images/Profile_Pic.jpeg" alt="Venkatesh M" />
       </div>
       <div class="hero-sci">
         <a href="https://www.linkedin.com/in/venkatesh-m-vk090503"
@@ -1269,10 +1273,7 @@
     <section class="about" id="about">
       <div class="about-content">
         <div class="about-img">
-          <img
-            src="D:\Documentations\Resume\Portfolio\Images\Venky.jpg"
-            alt="About Venkatesh"
-          />
+          <img src="Images\Venky.jpg" alt="About Venkatesh" />
         </div>
         <div class="about-text">
           <h2 class="section-title">About <span>Me</span></h2>
@@ -1328,7 +1329,7 @@
           <div class="timeline-content">
             <h3>M.Sc Computer Science</h3>
             <h4>Thiagarajar College, Madurai</h4>
-            <p>Currently pursuing with 83% aggregate</p>
+            <p>Completed with 83% aggregate</p>
             <p class="date">2023 - Present</p>
           </div>
         </div>
@@ -1389,10 +1390,7 @@
       <div class="project-container">
         <div class="project-card">
           <div class="project-img">
-            <img
-              src="D:\Documentations\Resume\Portfolio\Images\MFA1.png"
-              alt="Unified MFA System"
-            />
+            <img src="Images\MFA1.png" alt="Unified MFA System" />
           </div>
           <div class="project-content">
             <h3>Unified MFA System</h3>
@@ -1416,7 +1414,7 @@
 
         <div class="project-card">
           <div class="project-img">
-            <img src="D:\Documentations\Resume\Portfolio\Images\IMH2.png" alt="Image Healer" />
+            <img src="Images\IMH2.png" alt="Image Healer" />
           </div>
           <div class="project-content">
             <h3>Image Healer</h3>
@@ -1630,6 +1628,32 @@
         </div>
 
         <div class="contact-form">
+      <h3>Send Me a Message</h3>
+      <form id="contactForm" action="https://script.google.com/macros/s/AKfycby8nrh5wuFyrHqsyEOaPwjRqiq6IlLxqch6WvMVvo3o7x0Gq5l238ODFO6H4mQs18nz4w/exec" method="POST">
+        <div class="input-box">
+          <input type="text" name="name" required />
+          <label>Full Name</label>
+        </div>
+
+        <div class="input-box">
+          <input type="email" name="email" required />
+          <label>Email</label>
+        </div>
+
+        <div class="input-box">
+          <input type="text" name="subject" required />
+          <label>Subject</label>
+        </div>
+
+        <div class="input-box">
+          <textarea name="message" required></textarea>
+          <label>Message</label>
+        </div>
+
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </div>
+        <!-- <div class="contact-form">
           <h3>Send Me a Message</h3>
           <form action="#" method="POST">
             <div class="input-box">
@@ -1654,7 +1678,7 @@
 
             <button type="submit" class="btn">Send Message</button>
           </form>
-        </div>
+        </div> -->
       </div>
     </section>
 
@@ -1822,6 +1846,7 @@
           document.querySelector(".hero-img").style.opacity = "1";
         }, 500);
       });
-    </script>
+
+          </script>
   </body>
 </html>
